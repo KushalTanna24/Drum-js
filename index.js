@@ -7,13 +7,14 @@ for (i = 0; i < document.querySelectorAll(".drum").length; i++) {
         var currentButton = this.innerHTML;
         // calling the function and pass the currentButton value which will have the innerHTML value.
         makeSound(currentButton);
-
+        buttonAnimation(currentButton);
     });
 
 }
 //detecting keyboard press
 document.addEventListener('keydown', function (event) {
     makeSound(event.key);
+    buttonAnimation(event.key);
 });
 
 // function to check the key and play the sound.
@@ -61,7 +62,13 @@ function makeSound(key) {
 
 }
 
+function buttonAnimation(animateButton){
+    document.querySelector("."+ animateButton).classList.add("pressed")
 
+    setTimeout(function(){
+        document.querySelector("."+animateButton).classList.remove("pressed")
+    }, 100);
+}
 
 
 
